@@ -26,17 +26,13 @@ $cakeDescription = 'ReadingChallenge admin';
   </title>
   <?= $this->Html->meta('icon') ?>
 
-  <!-- <?= $this->Html->css('bootstrap.css'); ?> -->
-  <?= $this->Html->css('custom.css'); ?>
-
   <?= $this->fetch('meta') ?>
   <?= $this->fetch('css') ?>
   <?= $this->fetch('script') ?>
-  <!-- <?= $this->Html->script('jquery-1.11.3'); ?> -->
+
   <?= $this->Html->script('bootstrap'); ?>
 </head>
 <body>
-  <!-- <?= $this->fetch('title') ?> -->
   <?php echo $this->Flash->render(); ?>
 
   <div class="container">

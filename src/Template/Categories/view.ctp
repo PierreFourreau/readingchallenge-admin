@@ -9,7 +9,14 @@
   </ul>
 </nav>
 <div class="categories view large-9 medium-8 columns content">
-    <?= $this->Html->image($category->image, ['class'=>'thumbnail']); ?>
+  <?php
+  if($category->image != null) {
+    echo $this->Html->image($category->image, ['class'=>'thumbnail']);
+  }
+  else {
+    echo "Aucune image sélectionnée.";
+  }
+  ?>
   <div class="panel panel-default">
     <div class="panel-heading">Categorie id : <?= h($category->id) ?></div>
     <table class="table table-striped">
@@ -69,7 +76,7 @@
         </tr>
         <?php foreach($category['suggestions'] as $suggestion) {?>
           <tr>
-              <td><?= h($suggestion->id) ?></td>
+            <td><?= h($suggestion->id) ?></td>
             <td><?= h($suggestion->libelle_fr) ?></td>
             <td><?= h($suggestion->libelle_en) ?></td>
             <td><?= $this->Form->postLink(__('Delete'), ['controller'=>'suggestions', 'action' => 'delete', $suggestion->id], ['confirm' => __('Are you sure you want to delete # {0}?', $category->id)]) ?></td>
