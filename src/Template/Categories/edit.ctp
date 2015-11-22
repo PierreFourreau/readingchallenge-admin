@@ -12,7 +12,7 @@
     </ul>
 </nav>
 <div class="categories form large-9 medium-8 columns content">
-    <?= $this->Form->create($category) ?>
+    <?= $this->Form->create($category, ['enctype' => 'multipart/form-data']) ?>
     <fieldset>
         <legend><?= __('Edit Category') ?></legend>
         <?php
@@ -20,7 +20,7 @@
             echo $this->Form->input('libelle_en');
             echo $this->Form->input('description_fr');
             echo $this->Form->input('description_en');
-            echo $this->Form->input('image');
+            echo $this->Form->input('image', ['type' => 'file']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
