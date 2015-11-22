@@ -3,14 +3,13 @@
   <?= $this->Html->link('Add', array('action' => 'add'), array('class'=>'btn btn-primary', 'escape' => false)); ?>
   <br/><br/>
   <div class="panel panel-default">
-    <div class="panel-heading">Suggestions</div>
+    <div class="panel-heading">Toutes les suggestions</div>
     <table class="table table-striped" cellpadding="0" cellspacing="0">
       <thead>
         <tr>
           <th><?= $this->Paginator->sort('id') ?></th>
           <th><?= $this->Paginator->sort('libelle_fr') ?></th>
           <th><?= $this->Paginator->sort('libelle_en') ?></th>
-          <th><?= $this->Paginator->sort('categorie_id') ?></th>
           <th><?= $this->Paginator->sort('created') ?></th>
           <th><?= $this->Paginator->sort('modified') ?></th>
           <th class="actions"><?= __('Actions') ?></th>
@@ -22,7 +21,6 @@
             <td><?= $this->Number->format($suggestion->id) ?></td>
             <td><?= h($suggestion->libelle_fr) ?></td>
             <td><?= h($suggestion->libelle_en) ?></td>
-            <td><?= $suggestion->has('category') ? $this->Html->link($suggestion->category->id, ['controller' => 'Categories', 'action' => 'view', $suggestion->category->id]) : '' ?></td>
             <td><?= h($suggestion->created) ?></td>
             <td><?= h($suggestion->modified) ?></td>
             <td class="actions">

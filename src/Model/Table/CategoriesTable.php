@@ -8,62 +8,63 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Categories Model
- *
- */
+* Categories Model
+*
+*/
 class CategoriesTable extends Table
 {
 
-    /**
-     * Initialize method
-     *
-     * @param array $config The configuration for the Table.
-     * @return void
-     */
-    public function initialize(array $config)
-    {
-        parent::initialize($config);
+  /**
+  * Initialize method
+  *
+  * @param array $config The configuration for the Table.
+  * @return void
+  */
+  public function initialize(array $config)
+  {
+    parent::initialize($config);
 
-        $this->table('categories');
-        $this->displayField('id');
-        $this->primaryKey('id');
+    $this->table('categories');
+    $this->displayField('id');
+    $this->primaryKey('id');
 
-        $this->addBehavior('Timestamp');
+    $this->addBehavior('Timestamp');
 
-    }
+    $this->hasMany('Suggestions');
+  }
 
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
-    public function validationDefault(Validator $validator)
-    {
-        $validator
-            ->add('id', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('id', 'create');
+  /**
+  * Default validation rules.
+  *
+  * @param \Cake\Validation\Validator $validator Validator instance.
+  * @return \Cake\Validation\Validator
+  */
+  public function validationDefault(Validator $validator)
+  {
+    $validator
+    ->add('id', 'valid', ['rule' => 'numeric'])
+    ->allowEmpty('id', 'create');
 
-        $validator
-            ->requirePresence('libelle_fr', 'create')
-            ->notEmpty('libelle_fr');
+    $validator
+    ->requirePresence('libelle_fr', 'create')
+    ->notEmpty('libelle_fr');
 
-        $validator
-            ->requirePresence('libelle_en', 'create')
-            ->notEmpty('libelle_en');
+    $validator
+    ->requirePresence('libelle_en', 'create')
+    ->notEmpty('libelle_en');
 
-        $validator
-            ->requirePresence('description_fr', 'create')
-            ->notEmpty('description_fr');
+    $validator
+    ->requirePresence('description_fr', 'create')
+    ->notEmpty('description_fr');
 
-        $validator
-            ->requirePresence('description_en', 'create')
-            ->notEmpty('description_en');
+    $validator
+    ->requirePresence('description_en', 'create')
+    ->notEmpty('description_en');
 
-        $validator
-            ->requirePresence('image', 'create')
-            ->notEmpty('image');
+    $validator
+    ->requirePresence('image', 'create')
+    ->notEmpty('image');
 
-        return $validator;
-    }
+    return $validator;
+  }
 }

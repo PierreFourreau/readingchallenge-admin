@@ -170,6 +170,8 @@ Request::addDetector('tablet', function ($request) {
  * Inflector::rules('transliteration', ['/å/' => 'aa']);
  */
 
+Inflector::rules('irregular', ['categorie' => 'categories']);
+
 /**
  * Plugins need to be loaded manually, you can either load them one by one or all of them in a single call
  * Uncomment one of the lines below, as you need. make sure you read the documentation on Plugin to use more
@@ -186,7 +188,7 @@ Plugin::load('BootstrapUI');
 // Only try to load DebugKit in development mode
 // Debug Kit should not be installed on a production system
 if (Configure::read('debug')) {
-    Plugin::load('DebugKit', ['bootstrap' => true]);
+    Plugin::load('DebugKit', ['bootstrap' => false]);
 }
 
 /**

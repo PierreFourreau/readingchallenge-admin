@@ -14,7 +14,13 @@
         <?php
             echo $this->Form->input('libelle_fr');
             echo $this->Form->input('libelle_en');
+            if(isset($this->request->pass) && isset($this->request->pass[0])) {
+echo $this->Form->input('categorie_id', ['options' => $categories, 'default' => $this->request->pass[0] != null ? $this->request->pass[0] : '']);
+            }
+            else {
             echo $this->Form->input('categorie_id', ['options' => $categories]);
+
+            }
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

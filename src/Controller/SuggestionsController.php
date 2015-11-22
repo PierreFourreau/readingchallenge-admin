@@ -51,6 +51,7 @@ class SuggestionsController extends AppController
         $suggestion = $this->Suggestions->newEntity();
         if ($this->request->is('post')) {
             $suggestion = $this->Suggestions->patchEntity($suggestion, $this->request->data);
+            $suggestion['categorie_id'] = $this->request->pass[0];
             if ($this->Suggestions->save($suggestion)) {
                 $this->Flash->success(__('The suggestion has been saved.'));
                 return $this->redirect(['action' => 'index']);
