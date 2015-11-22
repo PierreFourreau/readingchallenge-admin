@@ -34,6 +34,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('script') ?>
 </head>
 <body>
+  <?php
+if(isset($currentUser)) {
+  echo "Connnecté en tant que " . $currentUser['username'];
+  echo $this->Html->link('Log out', array('controller' => 'users', 'action' => 'logout'));
+}
+  ?>
     <nav class="top-bar expanded" data-topbar role="navigation">
         <ul class="title-area large-3 medium-4 columns">
             <li class="name">
