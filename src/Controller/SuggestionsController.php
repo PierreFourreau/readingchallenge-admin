@@ -55,7 +55,7 @@ class SuggestionsController extends AppController
             $suggestion['categorie_id'] = $this->request->pass[0];
             if ($this->Suggestions->save($suggestion)) {
                 $this->Flash->success(__('The suggestion has been saved.'));
-                return $this->redirect(['action' => 'index', $suggestion['categorie_id']]);
+                return $this->redirect(['controller' => 'categories', 'action' => 'view', $suggestion['categorie_id']]);
             } else {
                 $this->Flash->error(__('The suggestion could not be saved. Please, try again.'));
             }
