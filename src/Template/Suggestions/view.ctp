@@ -5,7 +5,7 @@
         <li><?= $this->Html->link(__('Edit Suggestion'), ['action' => 'edit', $suggestion->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Delete Suggestion'), ['action' => 'delete', $suggestion->id], ['confirm' => __('Are you sure you want to delete # {0}?', $suggestion->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Suggestions'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Suggestion'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('New Suggestion'), ['action' => 'add', $suggestion->category->id]) ?> </li>
         <li><?= $this->Html->link(__('List Categories'), ['controller' => 'Categories', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Category'), ['controller' => 'Categories', 'action' => 'add']) ?> </li>
     </ul>

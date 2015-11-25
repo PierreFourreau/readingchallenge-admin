@@ -1,6 +1,6 @@
 <?php $this->extend('../Layout/TwitterBootstrap/dashboard'); ?>
 <div class="categories index large-9 medium-8 columns content">
-  <?= $this->Html->link('Add', array('action' => 'add'), array('class'=>'btn btn-primary', 'escape' => false)); ?>
+  <?= $this->Html->link('Add', array('action' => 'add', $categorie_id), array('class'=>'btn btn-primary', 'escape' => false)); ?>
   <br/><br/>
   <div class="panel panel-default">
     <div class="panel-heading">Toutes les suggestions</div>
