@@ -21,6 +21,10 @@
     <div class="panel-heading">Categorie id : <?= h($category->id) ?></div>
     <table class="table table-striped">
       <tr>
+        <th><?= __('Niveau') ?></th>
+        <td><?= $niveaux[$category->niveau] ?></td>
+      </tr>
+      <tr>
         <th><?= __('Libelle Fr') ?></th>
         <td><?= h($category->libelle_fr) ?></td>
       </tr>

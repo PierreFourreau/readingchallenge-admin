@@ -184,6 +184,7 @@ Inflector::rules('irregular', ['categorie' => 'categories']);
 
 Plugin::load('Migrations');
 Plugin::load('BootstrapUI');
+Configure::load('Constants');
 
 // Only try to load DebugKit in development mode
 // Debug Kit should not be installed on a production system

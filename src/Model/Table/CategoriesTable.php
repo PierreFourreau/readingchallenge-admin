@@ -46,6 +46,10 @@ class CategoriesTable extends Table
     ->allowEmpty('id', 'create');
 
     $validator
+    ->requirePresence('niveau', 'create')
+    ->notEmpty('niveau');
+
+    $validator
     ->requirePresence('libelle_fr', 'create')
     ->notEmpty('libelle_fr');
 
@@ -60,10 +64,6 @@ class CategoriesTable extends Table
     $validator
     ->requirePresence('description_en', 'create')
     ->notEmpty('description_en');
-
-    $validator
-    ->requirePresence('image', 'create')
-    ->notEmpty('image');
 
     return $validator;
   }

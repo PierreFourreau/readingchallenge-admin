@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Core\Configure;
 
 /**
 * Categories Controller
@@ -18,7 +19,14 @@ class CategoriesController extends AppController
   */
   public function index()
   {
-    $this->set('categories', $this->paginate($this->Categories));
+    $this->set('niveaux', Configure::read('niveaux'));
+    if(isset($this->request->data) && isset($this->request->data['niveau'])) {
+      $niveau = $this->request->data['niveau'];
+      $this->set('categories', $this->paginate($this->Categories->find('all')->where(['niveau' => $niveau])));
+    }
+    else {
+      $this->set('categories', $this->paginate($this->Categories));
+    }
     $this->set('_serialize', ['categories']);
   }
 
@@ -34,6 +42,7 @@ class CategoriesController extends AppController
     $category = $this->Categories->get($id, [
       'contain' => ['Suggestions']
     ]);
+    $this->set('niveaux', Configure::read('niveaux'));
     $this->set('category', $category);
     $this->set('_serialize', ['category']);
   }
@@ -63,6 +72,7 @@ class CategoriesController extends AppController
         $this->Flash->error(__('The category could not be saved. Please, try again.'));
       }
     }
+    $this->set('niveaux', Configure::read('niveaux'));
     $this->set(compact('category'));
     $this->set('_serialize', ['category']);
   }
@@ -81,22 +91,15 @@ class CategoriesController extends AppController
     ]);
     if ($this->request->is(['patch', 'post', 'put'])) {
       $category = $this->Categories->patchEntity($category, $this->request->data);
-      $file = $this->request->data['image'];
-      $category = $this->Categories->patchEntity($category, $this->request->data);
-      $category['image'] = $file['name'];
       if ($this->Categories->save($category)) {
-        if(move_uploaded_file($file['tmp_name'], WWW_ROOT . 'img' . DS . $file['name']))
-        {
-          $this->Flash->success(__('The category has been saved.'));
-          return $this->redirect(['action' => 'index']);
-        }
-        else {
-          $this->Flash->error(__('Image upload error. The category could not be saved. Please, try again.'));
-        }
+        $this->Flash->success(__('The category has been saved.'));
+        return $this->redirect(['action' => 'index']);
+
       } else {
         $this->Flash->error(__('The category could not be saved. Please, try again.'));
       }
     }
+    $this->set('niveaux', Configure::read('niveaux'));
     $this->set(compact('category'));
     $this->set('_serialize', ['category']);
   }

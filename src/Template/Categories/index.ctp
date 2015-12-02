@@ -1,9 +1,16 @@
 <?php $this->extend('../Layout/TwitterBootstrap/dashboard'); ?>
 <div class="categories index large-9 medium-8 columns content">
-  <h3>Liste des catégories du challenge</h3>
+  <h3>Liste des catégories : <?php echo isset($this->request->data['niveau']) ? $niveaux[$this->request->data['niveau']] : 'tous niveaux'; ?></h3>
   <hr/>
   <?= $this->Html->link('Add', array('action' => 'add'), array('class'=>'btn btn-primary', 'escape' => false)); ?>
-  <br/><br/>
+  <br/><hr/>
+  <?php
+  echo $this->Form->create(null);
+    echo $this->Form->label('Niveau')."<br/>";
+    echo $this->Form->select('niveau', $niveaux, ['onchange' => 'this.form.submit()']);
+    echo $this->Form->end();
+    ?>
+<br/><br/>
   <div class="panel panel-default">
     <div class="panel-heading">Categories</div>
     <table class="table table-striped" cellpadding="0" cellspacing="0">

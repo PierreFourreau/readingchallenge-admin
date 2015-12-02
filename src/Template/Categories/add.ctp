@@ -10,6 +10,8 @@
     <fieldset>
         <legend><?= __('Add Category') ?></legend>
         <?php
+            echo $this->Form->label('Niveau')."<br/>";
+            echo $this->Form->select('niveau', $niveaux)."<br/><br/>";
             echo $this->Form->input('libelle_fr');
             echo $this->Form->input('libelle_en');
             echo $this->Form->input('description_fr');
