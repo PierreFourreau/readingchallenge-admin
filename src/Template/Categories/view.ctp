@@ -72,14 +72,18 @@
           <th><?= __('Id') ?></th>
           <th><?= __('Libelle Fr') ?></th>
           <th><?= __('Libelle En') ?></th>
-          <th><?= __('Action') ?></th>
+          <th class="actions"><?= __('Action') ?></th>
         </tr>
         <?php foreach($category['suggestions'] as $suggestion) {?>
           <tr>
             <td><?= h($suggestion->id) ?></td>
             <td><?= h($suggestion->libelle_fr) ?></td>
             <td><?= h($suggestion->libelle_en) ?></td>
-            <td><?= $this->Form->postLink(__('Delete'), ['controller'=>'suggestions', 'action' => 'delete', $suggestion->id], ['confirm' => __('Are you sure you want to delete # {0}?', $category->id)]) ?></td>
+            <td class="actions">
+              <?= $this->Html->link(__('Edit'), ['controller'=>'suggestions', 'action' => 'edit', $suggestion->id]) ?>
+              <?= $this->Form->postLink(__('Delete'), ['controller'=>'suggestions', 'action' => 'delete', $suggestion->id], ['confirm' => __('Are you sure you want to delete # {0}?', $category->id)]) ?>
+            </td>
+            <td></td>
           </tr>
           <?php } ?>
         </table>

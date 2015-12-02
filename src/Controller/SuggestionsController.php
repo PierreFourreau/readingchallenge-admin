@@ -81,7 +81,7 @@ class SuggestionsController extends AppController
             $suggestion = $this->Suggestions->patchEntity($suggestion, $this->request->data);
             if ($this->Suggestions->save($suggestion)) {
                 $this->Flash->success(__('The suggestion has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller' => 'categories', 'action' => 'view', $suggestion['categorie_id']]);
             } else {
                 $this->Flash->error(__('The suggestion could not be saved. Please, try again.'));
             }
@@ -107,6 +107,6 @@ class SuggestionsController extends AppController
         } else {
             $this->Flash->error(__('The suggestion could not be deleted. Please, try again.'));
         }
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['controller' => 'categories', 'action' => 'view', $suggestion['categorie_id']]);
     }
 }

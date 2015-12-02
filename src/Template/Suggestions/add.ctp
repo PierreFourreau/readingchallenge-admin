@@ -23,6 +23,6 @@ echo $this->Form->input('categorie_id', ['options' => $categories, 'default' => 
             }
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button('Submit', ['class' => 'btn-primary']) ?>
     <?= $this->Form->end() ?>
 </div>

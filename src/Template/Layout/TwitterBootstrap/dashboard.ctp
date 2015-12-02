@@ -1,5 +1,6 @@
 <?php
 use Cake\Core\Configure;
+echo $this->Html->meta(array('name' => 'viewport', 'content' => 'width=device-width, initial-scale=1'));
 
 $this->Html->css('BootstrapUI.dashboard', ['block' => true]);
 $this->prepend('tb_body_attrs', ' class="' . implode(' ', array($this->request->controller, $this->request->action)) . '" ');

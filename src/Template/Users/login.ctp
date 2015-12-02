@@ -10,6 +10,6 @@
         <?= $this->Form->input('username') ?>
         <?= $this->Form->input('password') ?>
     </fieldset>
-<?= $this->Form->button(__('Se Connecter')); ?>
+<?= $this->Form->button('Se Connecter', ['class' => 'btn-primary']); ?>
 <?= $this->Form->end() ?>
 </div>

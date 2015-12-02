@@ -12,9 +12,9 @@
           <th><?= $this->Paginator->sort('id') ?></th>
           <th><?= $this->Paginator->sort('libelle_fr') ?></th>
           <th><?= $this->Paginator->sort('libelle_en') ?></th>
-          <th><?= $this->Paginator->sort('image') ?></th>
-          <th><?= $this->Paginator->sort('created') ?></th>
-          <th><?= $this->Paginator->sort('modified') ?></th>
+          <th class="image"><?= $this->Paginator->sort('image') ?></th>
+          <th class="created"><?= $this->Paginator->sort('created') ?></th>
+          <th class="modified"><?= $this->Paginator->sort('modified') ?></th>
           <th class="actions"><?= __('Actions') ?></th>
         </tr>
       </thead>
@@ -24,9 +24,9 @@
             <td><?= $this->Number->format($category->id) ?></td>
             <td><?= h($category->libelle_fr) ?></td>
             <td><?= h($category->libelle_en) ?></td>
-            <td><?= h($category->image) ?></td>
-            <td><?= h($category->created) ?></td>
-            <td><?= h($category->modified) ?></td>
+            <td class="image"><?= h($category->image) ?></td>
+            <td class="created"><?= h($category->created) ?></td>
+            <td class="modified"><?= h($category->modified) ?></td>
             <td class="actions">
               <?= $this->Html->link(__('View'), ['action' => 'view', $category->id]) ?>
               <?= $this->Html->link(__('Edit'), ['action' => 'edit', $category->id]) ?>
