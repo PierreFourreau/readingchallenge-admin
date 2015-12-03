@@ -38,6 +38,7 @@ $cakeDescription = 'ReadingChallenge admin';
     <?php echo $this->fetch('content'); ?>
     <hr>
     <footer>
+      <?=  $this->Html->link($currentUser['username'],'#');?>
       <p>Développé par <a href="http://pierrefourreau.fr">Pierre Fourreau</a></p>
     </footer>
   </div>

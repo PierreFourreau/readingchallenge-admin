@@ -24,10 +24,10 @@ $this->start('tb_body_start');
       </ul> -->
 
       <ul class="nav navbar-nav navbar-left">
-        <li><?= $this->Html->link('Readingchallenge admin','/'); ?></li>
+        <li><?= $this->Html->link('Readingchallenge','/'); ?></li>
         <?php
         if(isset($currentUser)) {
-          echo "<li>" . $this->Html->link($currentUser['username'],'#') . "</li>";
+          echo "<li>" . $this->Html->link(__('Propositions'),array('controller'=>'Propositions','action'=>'index')) . "</li>";
           echo "<li>" . $this->Html->link(__('Logs API'),array('controller'=>'Logs','action'=>'index')) . "</li>";
           echo "<li>" . $this->Html->link(__('Logs OVH'), 'https://logs.ovh.net/pierrefourreau.fr/', ['target' => '_blank']) . "</li>";
           echo "<li>" . $this->Html->link(__('Logout'),array('controller'=>'Users','action'=>'logout')) . "</li>";
@@ -51,7 +51,8 @@ $this->start('tb_body_start');
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
-      <?= $this->Html->link(__('Liste des categories'), ['controller' => 'categories', 'action' => 'index']) ?>
+      <?= $this->Html->link(__('Liste des categories'), ['controller' => 'categories', 'action' => 'index']) ?><br/>
+      <?= $this->Html->link(__('Liste des propositions'), ['controller' => 'propositions', 'action' => 'index']) ?>
       <?= $this->fetch('tb_sidebar') ?>
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
