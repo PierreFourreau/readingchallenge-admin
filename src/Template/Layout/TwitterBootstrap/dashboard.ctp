@@ -29,6 +29,7 @@ $this->start('tb_body_start');
         if(isset($currentUser)) {
           echo "<li>" . $this->Html->link($currentUser['username'],'#') . "</li>";
           echo "<li>" . $this->Html->link(__('Logs API'),array('controller'=>'Logs','action'=>'index')) . "</li>";
+          echo "<li>" . $this->Html->link(__('Logs OVH'), 'https://logs.ovh.net/pierrefourreau.fr/', ['target' => '_blank']) . "</li>";
           echo "<li>" . $this->Html->link(__('Logout'),array('controller'=>'Users','action'=>'logout')) . "</li>";
         }
         else {
