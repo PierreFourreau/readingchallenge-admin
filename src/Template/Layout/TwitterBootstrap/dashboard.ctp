@@ -28,6 +28,7 @@ $this->start('tb_body_start');
         <?php
         if(isset($currentUser)) {
           echo "<li>" . $this->Html->link($currentUser['username'],'#') . "</li>";
+          echo "<li>" . $this->Html->link(__('Logs API'),array('controller'=>'Logs','action'=>'index')) . "</li>";
           echo "<li>" . $this->Html->link(__('Logout'),array('controller'=>'Users','action'=>'logout')) . "</li>";
         }
         else {
