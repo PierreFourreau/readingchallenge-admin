@@ -37,9 +37,7 @@ class LogsController extends AppController
   {
     if(isset($fileName)) {
       $file = new File(Configure::read('api_url') . DS . $fileName);
-
       $contents = $file->read();
-
       $this->set('contents', $contents);
     }
   }

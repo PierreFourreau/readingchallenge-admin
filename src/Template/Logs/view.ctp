@@ -3,8 +3,7 @@
   <h3>Log</h3>
   <hr/>
   <?php
-  echo $contents;
-  echo "<br/><br/><hr/>";
+  echo "<pre>".($contents)."</pre>";
   echo $this->Html->link(__('Retour'),array('controller'=>'Logs','action'=>'index'));
   ?>
 </div>
