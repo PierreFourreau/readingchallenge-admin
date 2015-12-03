@@ -22,7 +22,7 @@ class LogsController extends AppController
   {
 
     $dir = new Folder(Configure::read('api_url'));
-    $files = $dir->find('.*\.txt');
+    $files = $dir->find('.*\.log');
     $this->set('files', $files);
   }
 
