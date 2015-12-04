@@ -16,12 +16,12 @@ class CreatePropositions extends AbstractMigration
         $table->addColumn('libelle_fr', 'string', [
             'default' => null,
             'limit' => 255,
-            'null' => false,
+            'null' => true,
         ]);
         $table->addColumn('libelle_en', 'string', [
             'default' => null,
             'limit' => 255,
-            'null' => false,
+            'null' => true,
         ]);
         $table->addColumn('categorie_id', 'integer', [
             'default' => null,
