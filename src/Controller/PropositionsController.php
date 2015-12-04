@@ -60,14 +60,21 @@ class PropositionsController extends AppController
   {
     $proposition = $this->Propositions->get($id);
     $proposition['acceptation'] = 1;
-    if ($this->Propositions->save($proposition)) {
-      $Suggestions = new SuggestionsController;
-      $Suggestions->addAfterValidate($proposition['libelle_fr'], $proposition['libelle_en'], $proposition['categorie_id']);
-      return $this->redirect(['action' => 'index']);
-    } else {
-      $this->Flash->error(__('The proposition could not be saved. Please, try again.'));
+    if($proposition['libelle_fr'] != "" && $proposition['libelle_en'] != "") {
+      if ($this->Propositions->save($proposition)) {
+        $Suggestions = new SuggestionsController;
+        $Suggestions->addAfterValidate($proposition['libelle_fr'], $proposition['libelle_en'], $proposition['categorie_id']);
+        return $this->redirect(['action' => 'index']);
+      } else {
+        $this->Flash->error(__('The proposition could not be saved. Please, try again.'));
+        return $this->redirect(['action' => 'index']);
+      }
+    }
+    else {
+      $this->Flash->error(__('The proposition could not be saved. Missing libelle ! Please, try again.'));
       return $this->redirect(['action' => 'index']);
     }
+
   }
 
   /**
