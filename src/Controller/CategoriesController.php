@@ -60,14 +60,11 @@ class CategoriesController extends AppController
       $category = $this->Categories->patchEntity($category, $this->request->data);
       $category['image'] = $file['name'];
       if ($this->Categories->save($category)) {
-        if(move_uploaded_file($file['tmp_name'], WWW_ROOT . 'img' . DS . $file['name']))
-        {
-          $this->Flash->success(__('The category has been saved.'));
-          return $this->redirect(['action' => 'index']);
+        if(move_uploaded_file($file['tmp_name'], WWW_ROOT . 'img' . DS . $file['name']) == false) {
+          $this->Flash->error(__('Image upload error.'));
         }
-        else {
-          $this->Flash->error(__('Image upload error. The category could not be saved. Please, try again.'));
-        }
+        $this->Flash->success(__('The category has been saved.'));
+        return $this->redirect(['action' => 'index']);
       } else {
         $this->Flash->error(__('The category could not be saved. Please, try again.'));
       }
@@ -90,8 +87,13 @@ class CategoriesController extends AppController
       'contain' => []
     ]);
     if ($this->request->is(['patch', 'post', 'put'])) {
+      $file = $this->request->data['image'];
       $category = $this->Categories->patchEntity($category, $this->request->data);
+      $category['image'] = $file['name'];
       if ($this->Categories->save($category)) {
+        if(move_uploaded_file($file['tmp_name'], WWW_ROOT . 'img' . DS . $file['name']) == false) {
+          $this->Flash->error(__('Image upload error.'));
+        }
         $this->Flash->success(__('The category has been saved.'));
         return $this->redirect(['action' => 'index']);
       } else {
