@@ -1,6 +1,6 @@
 <?php $this->extend('../Layout/TwitterBootstrap/dashboard'); ?>
 <div class="categories index large-9 medium-8 columns content">
-  <h3>Liste des catégories : <?php echo isset($this->request->data['niveau']) ? $niveaux[$this->request->data['niveau']] : 'tous niveaux'; ?></h3>
+  <h3>Liste des catégories : <?php echo isset($this->request->data['niveau']) ? $niveaux[$this->request->data['niveau']] : 'débutant'; ?></h3>
   <hr/>
   <?= $this->Html->link('Add', array('action' => 'add'), array('class'=>'btn btn-primary', 'escape' => false)); ?>
   <br/><hr/>

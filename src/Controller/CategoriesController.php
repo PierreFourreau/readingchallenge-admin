@@ -20,13 +20,13 @@ class CategoriesController extends AppController
   public function index()
   {
     $this->set('niveaux', Configure::read('niveaux'));
-    if(isset($this->request->data) && isset($this->request->data['niveau'])) {
-      $niveau = $this->request->data['niveau'];
-      $this->set('categories', $this->paginate($this->Categories->find('all')->where(['niveau' => $niveau])));
+    if(!isset($this->request->data) || !isset($this->request->data['niveau'])) {
+      $niveau = 1;
     }
     else {
-      $this->set('categories', $this->paginate($this->Categories->find('all')->where(['niveau' => 1])));
+      $niveau = $this->request->data['niveau'];
     }
+      $this->set('categories', $this->paginate($this->Categories->find('all')->where(['niveau' => $niveau])));
     $this->set('_serialize', ['categories']);
   }
 
