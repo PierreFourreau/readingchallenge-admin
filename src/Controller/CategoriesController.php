@@ -89,10 +89,17 @@ class CategoriesController extends AppController
     if ($this->request->is(['patch', 'post', 'put'])) {
       $file = $this->request->data['image'];
       $category = $this->Categories->patchEntity($category, $this->request->data);
-      $category['image'] = $file['name'];
+      if(isset($file['name']) && $file['name'] != null) {
+        $category['image'] = $file['name'];
+      }
+      else {
+        unset($category['image']);
+      }
       if ($this->Categories->save($category)) {
-        if(move_uploaded_file($file['tmp_name'], WWW_ROOT . 'img' . DS . $file['name']) == false) {
-          $this->Flash->error(__('Image upload error.'));
+        if(isset($category['image']) && $category['image'] != null) {
+          if(move_uploaded_file($file['tmp_name'], WWW_ROOT . 'img' . DS . $file['name']) == false) {
+            $this->Flash->error(__('Image upload error.'));
+          }
         }
         $this->Flash->success(__('The category has been saved.'));
         return $this->redirect(['action' => 'index']);
