@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use App\Controller\SuggestionsController;
+use Cake\Mailer\Email;
 
 /**
 * Propositions Controller
@@ -64,6 +65,21 @@ class PropositionsController extends AppController
       if ($this->Propositions->save($proposition)) {
         $Suggestions = new SuggestionsController;
         $Suggestions->addAfterValidate($proposition['libelle_fr'], $proposition['libelle_en'], $proposition['categorie_id']);
+        //send email to user
+        if(isset($proposition['user_email']) && $proposition['user_email'] != null) {
+          if($proposition['user_language'] == 'fr') {
+            $content = "Bonjour, Félicitations, votre suggestion vient d'être validée par un administrateur ! A bientôt sur ReadBoard.";
+          }
+          else {
+            $content = "Hello, Congratulations, your suggestion has been approved by administrator ! See you soon on ReadBoard.";
+          }
+          $email = new Email('default');
+          $email->from(['read.board.contact@gmail.com' => 'ReadBoard'])
+          ->to($proposition['user_email'])
+          ->subject('ReadBoard - suggestion')
+          ->send($content);
+        }
+
         return $this->redirect(['action' => 'index']);
       } else {
         $this->Flash->error(__('The proposition could not be saved. Please, try again.'));
