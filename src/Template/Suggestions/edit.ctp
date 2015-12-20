@@ -20,6 +20,8 @@
         <?php
             echo $this->Form->input('libelle_fr');
             echo $this->Form->input('libelle_en');
+            echo $this->Form->input('url_fr');
+            echo $this->Form->input('url_en');
             echo $this->Form->input('categorie_id', ['options' => $categories]);
         ?>
     </fieldset>

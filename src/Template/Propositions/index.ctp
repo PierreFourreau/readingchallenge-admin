@@ -9,6 +9,8 @@
           <th><?= $this->Paginator->sort('id') ?></th>
           <th><?= $this->Paginator->sort('libelle_fr') ?></th>
           <th><?= $this->Paginator->sort('libelle_en') ?></th>
+          <th><?= $this->Paginator->sort('url_fr') ?></th>
+          <th><?= $this->Paginator->sort('url_en') ?></th>
           <th><?= $this->Paginator->sort('user_language') ?></th>
           <th><?= $this->Paginator->sort('user_email') ?></th>
           <th><?= $this->Paginator->sort('categorie_id') ?></th>
@@ -22,6 +24,8 @@
             <td><?= $this->Number->format($proposition->id) ?></td>
             <td><?= h($proposition->libelle_fr) ?></td>
             <td><?= h($proposition->libelle_en) ?></td>
+            <td><?= h($proposition->url_fr) ?></td>
+            <td><?= h($proposition->url_en) ?></td>
             <td><?= h($proposition->user_language) ?></td>
             <td><?= h($proposition->user_email) ?></td>
             <td><?= h($proposition->categorie->libelle_fr) ?></td>

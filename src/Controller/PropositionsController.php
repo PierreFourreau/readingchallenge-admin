@@ -64,7 +64,7 @@ class PropositionsController extends AppController
     if($proposition['libelle_fr'] != "" && $proposition['libelle_en'] != "") {
       if ($this->Propositions->save($proposition)) {
         $Suggestions = new SuggestionsController;
-        $Suggestions->addAfterValidate($proposition['libelle_fr'], $proposition['libelle_en'], $proposition['categorie_id']);
+        $Suggestions->addAfterValidate($proposition['libelle_fr'], $proposition['libelle_en'], $proposition['url_fr'], $proposition['url_en'],  $proposition['categorie_id']);
         //send email to user
         if(isset($proposition['user_email']) && $proposition['user_email'] != null) {
           if($proposition['user_language'] == 'fr') {

@@ -70,11 +70,13 @@ class SuggestionsController extends AppController
   *
   * @return void Redirects on successful add, renders view otherwise.
   */
-  public function addAfterValidate($libelle_fr, $libelle_en, $categorie_id)
+  public function addAfterValidate($libelle_fr, $libelle_en, $url_fr, $url_en, $categorie_id)
   {
     $suggestion = $this->Suggestions->newEntity();
     $suggestion['libelle_fr'] = $libelle_fr;
     $suggestion['libelle_en'] = $libelle_en;
+    $suggestion['url_fr'] = $url_fr;
+    $suggestion['url_en'] = $url_en;
     $suggestion['categorie_id'] = $categorie_id;
     if ($this->Suggestions->save($suggestion)) {
       $this->Flash->success(__('The proposition has been saved and added to suggestions.'));

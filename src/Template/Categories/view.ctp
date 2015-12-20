@@ -84,6 +84,7 @@
             <td><?= h($suggestion->libelle_fr) ?></td>
             <td><?= h($suggestion->libelle_en) ?></td>
             <td class="actions">
+              <?= $this->Html->link(__('View'), ['controller'=>'suggestions', 'action' => 'view', $suggestion->id]) ?>
               <?= $this->Html->link(__('Edit'), ['controller'=>'suggestions', 'action' => 'edit', $suggestion->id]) ?>
               <?= $this->Form->postLink(__('Delete'), ['controller'=>'suggestions', 'action' => 'delete', $suggestion->id], ['confirm' => __('Are you sure you want to delete # {0}?', $category->id)]) ?>
             </td>
