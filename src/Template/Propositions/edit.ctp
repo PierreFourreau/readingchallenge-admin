@@ -7,7 +7,10 @@
         <?php
             echo $this->Form->input('libelle_fr');
             echo $this->Form->input('libelle_en');
-            echo $this->Form->input('user_language');
+            echo $this->Form->input('url_fr');
+            echo $this->Form->input('url_en');
+            echo $this->Form->label('Language : ' . $proposition['user_language']) . '<br/><br/>';
+            echo 'Si email non conforme, vous pouvez vider le champs...';
             echo $this->Form->input('user_email');
         ?>
     </fieldset>
