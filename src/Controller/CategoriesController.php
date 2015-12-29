@@ -26,7 +26,7 @@ class CategoriesController extends AppController
     else {
       $niveau = $this->request->data['niveau'];
     }
-      $this->set('categories', $this->paginate($this->Categories->find('all')->where(['niveau' => $niveau])));
+      $this->set('categories', $this->Categories->find('all')->where(['niveau' => $niveau]));
     $this->set('_serialize', ['categories']);
   }
 
